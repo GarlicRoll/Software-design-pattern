@@ -2,14 +2,21 @@ package org.example;
 
 public class Main {
     /**
-     * Пример работы с классом Multition
+     * Пример работы с шаблоном Strategy
      */
     public static void main(String[] args) {
-        Multiton difficulty1 = Multiton.getInstance("Easy");
-        Multiton difficulty2 = Multiton.getInstance("Normal");
-        Multiton difficulty3 = Multiton.getInstance("Hard");
-        System.out.println(difficulty1);
-        System.out.println(difficulty2);
-        System.out.println(difficulty3);
+        Player player = new Player(100, 100);
+        player.setStrategy(new EasyStrategy());
+        int[] output;
+        output = player.executeStrategy();
+        player.setEnergy(player.getEnergy() - output[1]);
+        System.out.println(player.getEnergy() + " energy left.");
+        System.out.println(output[0] + " damage player tried to inflict.");
+
+        player.setStrategy(new HardStrategy());
+        output = player.executeStrategy();
+        player.setEnergy(player.getEnergy() - output[1]);
+        System.out.println(player.getEnergy() + " energy left.");
+        System.out.println(output[0] + " damage player tried to inflict.");
     }
 }
