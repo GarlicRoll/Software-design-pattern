@@ -2,14 +2,11 @@ package org.example;
 
 public class Main {
     /**
-     * Пример работы с классом Multition
+     * Пример работы с шаблоном Decorator
      */
     public static void main(String[] args) {
-        Multiton difficulty1 = Multiton.getInstance("Easy");
-        Multiton difficulty2 = Multiton.getInstance("Normal");
-        Multiton difficulty3 = Multiton.getInstance("Hard");
-        System.out.println(difficulty1);
-        System.out.println(difficulty2);
-        System.out.println(difficulty3);
+        Decorator mob = new DecoratorLegendary(new DecoratorInvisible(new Mob()));
+        mob.say();
+        mob.sayAdditional();
     }
 }
