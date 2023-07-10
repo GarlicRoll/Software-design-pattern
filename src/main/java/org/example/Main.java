@@ -2,14 +2,21 @@ package org.example;
 
 public class Main {
     /**
-     * Пример работы с классом Multition
+     * Пример работы с шаблоном state
      */
     public static void main(String[] args) {
-        Multiton difficulty1 = Multiton.getInstance("Easy");
-        Multiton difficulty2 = Multiton.getInstance("Normal");
-        Multiton difficulty3 = Multiton.getInstance("Hard");
-        System.out.println(difficulty1);
-        System.out.println(difficulty2);
-        System.out.println(difficulty3);
+        Player player = new Player();
+
+        System.out.println("\nNormal State");
+        player.setState(new NormalState());
+        player.getState().attack();
+
+        System.out.println("\nAttack State");
+        player.setState(new AttackState());
+        player.getState().attack();
+
+        System.out.println("\nProtection State");
+        player.setState(new ProtectionState());
+        player.getState().attack();
     }
 }
