@@ -2,14 +2,14 @@ package org.example;
 
 public class Main {
     /**
-     * Пример работы с классом Multition
+     * Пример работы с паттерном "строитель"
      */
     public static void main(String[] args) {
-        Multiton difficulty1 = Multiton.getInstance("Easy");
-        Multiton difficulty2 = Multiton.getInstance("Normal");
-        Multiton difficulty3 = Multiton.getInstance("Hard");
-        System.out.println(difficulty1);
-        System.out.println(difficulty2);
-        System.out.println(difficulty3);
+        Mob.Builder mobInConstruction = new Mob.Builder();
+        mobInConstruction.withHealth(100);
+        mobInConstruction.withArmor(50);
+        Mob mob = mobInConstruction.getResult();
+        System.out.println("Health: " + mob.getHealth());
+        System.out.println("Armor: " + mob.getArmor());
     }
 }
